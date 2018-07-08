@@ -1,0 +1,145 @@
+<!DOCTYPE> 
+<html> 
+<head> 
+<style>
+
+*{
+margin:2;
+padding:4;
+}
+
+.button{
+width:100;
+height:60;
+font-size:30;
+margin:5;
+cursor:pointer;
+}
+
+.display{
+width:350;
+margin:10;
+font-size:30;
+padding:10;
+}
+</style>
+
+
+ 
+       
+<title>Calculator</title>
+</head>
+<body>
+<form name="myForm">
+<input name="display" type="text" class="display" value=" "> 
+<table align="center">
+
+<tr>
+<td><input class="button" type="button" value="7" onclick="numberClick(7)"> </td>
+<td><input class="button" type="button" value="8" onclick="numberClick(8)"> </td>						
+<td><input class="button" type="button" value="9" onclick="numberClick(9)"> </td>						
+</tr>
+
+<tr>
+<td><input class="button" type="button" value="4" onclick="numberClick(4)"> </td>
+<td><input class="button" type="button" value="5" onclick="numberClick(5)"> </td>						
+<td><input class="button" type="button" value="6" onclick="numberClick(6)"> </td>						
+</tr>
+
+<tr>
+<td><input class="button" type="button" value="1" onclick="numberClick(1)"> </td>
+<td><input class="button" type="button" value="2" onclick="numberClick(2)"> </td>						
+<td><input class="button" type="button" value="3" onclick="numberClick(3)"> </td>						
+</tr>
+				
+<tr>
+<td><input class="button" type="button" value="0" onclick="numberClick(0)"> </td>
+<td><input class="button" type="button" value="." onclick="pointClick()"> </td>						
+<td><input class="button" type="button" value="/" onclick="operandClick('/')"> </td>						
+</tr>
+				
+<tr>
+<td><input class="button" type="button" value="+" onclick="operandClick('+')"> </td>
+<td><input class="button" type="button" value="-" onclick="operandClick('-')"> </td>						
+<td><input class="button" type="button" value="*" onclick="operandClick('*')"> </td>						
+</tr>		
+						
+
+<tr>
+<td><input class="button" type="button" value="1/x" onclick="inverseClick('1/x')"> </td>
+<td><input class="button" type="button" value="C"   onclick="cleanClick()"> </td>     
+<td><input class="button" type="button" value="="   onclick="resultClick()"> </td>         
+</tr>				
+</table>
+</form>
+
+<script>
+var value0 = 0;
+var value1 = 0;
+var showNumber = true;
+var point;
+function numberClick(number) {
+	if (document.myForm.display.value == " " || showNumber){
+		document.myForm.display.value = number;
+			showNumber = false;
+}
+else
+{
+document.myForm.display.value = document.myForm.display.value + number;
+}
+}
+function operandClick(_operand) {
+	operand=_operand;
+	value0 = parseFloat(document.myForm.display.value);
+	showNumber = true;
+}
+function resultClick() {
+var result;
+	var display = document.myForm.display.value;
+	value1 = parseFloat(display);
+
+		if (operand == "+") {
+			result = value0 + value1;
+}
+		else if (operand == "-") {
+			result = value0 - value1;
+				}
+		else if (operand == "*"){
+			result = value0 * value1;
+				}
+		else{
+			result = parseFloat(value0 / value1);
+
+				}
+document.myForm.display.value = result;
+value0 = result;
+showNumber = true;
+}
+
+function pointClick() {
+var display=document.myForm.display.value;
+				if (document.myForm.display.value.indexOf(".") == -1) 
+				{
+					display = display + '.';
+					document.myForm.display.value = display;
+					showNumber = false;
+				}
+			}
+function inverseClick()  {
+	var display = document.myForm.display.value;
+	value0 = parseFloat(display);
+	result = 1 / value0;
+	document.myForm.display.value = result;
+	value1 = rezultat;
+	showNumber = true;
+}
+
+function cleanClick()  {
+	document.myForm.display.value=" ";
+	showNumber=true;
+			}
+
+</script>
+		
+</body>
+</html>
